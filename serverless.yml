@@ -20,6 +20,7 @@ provider:
   # under process.env
   environment:
     tableName: scratch_notes
+    AWS_REGION_DYNAMODB: us-west-1
     #sampleEnvVar: ${env:SAMPLE_ENV_VAR}
 
   # iamRoleStatements defines the permission policy for the Lambda function. In
