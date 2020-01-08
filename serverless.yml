@@ -38,6 +38,11 @@ provider:
       Resource: "arn:aws:dynamodb:us-west-1:*:*"
       #Resource: "arn:aws:dynamodb:us-west-1:980821764255:table/scratch_notes"
 
+# Create our resources with separate CloudFormation templates
+resources:
+  # API Gateway Errors
+  - ${file(resources/api-gateway-errors.yml)}
+
 functions:
   hello:
     handler: handler.hello
