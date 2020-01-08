@@ -103,5 +103,16 @@ functions:
           method: delete
           cors: true
           authorizer: aws_iam
+  count:
+    # Defines an HTTP API endpoint that calls the main function in count.js
+    # - path: url path is /notes/count
+    # - method: GET request
+    handler: count.main
+    events:
+      - http:
+          path: notes/count
+          method: get
+          cors: true
+          authorizer: aws_iam
 
 
