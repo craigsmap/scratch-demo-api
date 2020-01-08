@@ -1,6 +1,7 @@
 import uuid from "uuid";
 import * as dynamoDbLib from "./libs/dynamodb-lib";
 import { success, failure } from "./libs/response-lib";
+import { validateNote } from "./libs/notes-lib";
 
 
 export async function main(event, context, callback) {
@@ -27,6 +28,7 @@ export async function main(event, context, callback) {
   };
 
   try {
+    validateNote(params.Item);
     await dynamoDbLib.call('put', params);
     return success(params.Item);
   }

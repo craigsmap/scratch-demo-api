@@ -1,5 +1,6 @@
 import * as dynamoDbLib from "./libs/dynamodb-lib";
 import { success, failure } from "./libs/response-lib";
+import { validateNote } from "./libs/notes-lib";
 
 export async function main(event, context) {
   const data = JSON.parse(event.body);
@@ -26,6 +27,11 @@ export async function main(event, context) {
   };
 
   try {
+    const note = {};
+    for(let [k, v] of Object.entries(params.ExpressionAttributeValues)) {
+      note[k.replace(/^:/, '')] = v;
+    }
+    validateNote(note);
     await dynamoDbLib.call("update", params);
     return success({ status: true });
   } catch (e) {

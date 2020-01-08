@@ -1,0 +1,8 @@
+{
+  "body": "{\"attachment\":\"missing-content.jpg\"}",
+  "requestContext": {
+    "identity": {
+      "cognitoIdentityId": "USER-SUB-1234"
+    }
+  }
+}
